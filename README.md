@@ -7,7 +7,7 @@ Scripts for my UNIX based machines. I try to make each script work on any major 
 - can be run from any place on your system - it shouldn't result with output files in your current directory
 
 ### Install Nerd Fonts
-Nerd fonts are essential part of my every Linux setup. They I required by many fancy configs for shell or text editors. Script just install my favourite nerd fonts.
+Nerd fonts are essential part of my every Linux setup. They are required by many fancy configs for shell or text editors. Script just install my favourite nerd fonts.
 
 ### Install Neovim
 Neovim is just Vim but better. I like to use Neovim for Rust programming, Shell scripting and editing configs on my system. I use this script only for distros with outdated neovim version in repository (Ubuntu, Debian). On Arch based distros I install neovim just with `pacman`.
