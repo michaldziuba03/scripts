@@ -25,6 +25,8 @@ I don't really want to spend my time on mantaining own config for Neovim (I used
 2. Install Neovim
 3. [Copy single command from official docs](https://nvchad.com/docs/quickstart/install)
 
+> Make sure your terminal is configured to use Nerd Font.
+
 ### LICENSE
 Distributed under the MIT License. See LICENSE for more information.
 
