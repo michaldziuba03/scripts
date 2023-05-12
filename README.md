@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="300" src="https://github.com/michaldziuba03/scripts/assets/43048524/98580b6a-57f2-4e1b-b61c-303cf3575756" />  
+</p>
+
 ## Shell Scripts and setups
 Scripts for my UNIX based machines. I try to make each script work on any major Linux distro.
 
@@ -17,6 +21,8 @@ Neovim is just Vim but better. I like to use Neovim for Rust programming, Shell 
 ```sh
 curl -o- https://raw.githubusercontent.com/michaldziuba03/scripts/main/install-nvim.sh | sh
 ```
+
+> Script installs neovim in `~/.local/bin` directory. Make sure $PATH contains this directory to make `nvim` executable from any place. You may need to logout your session. If `nvim` command still does not work edit `.profile`, append `PATH="$HOME/.local/bin:$PATH"` and logout.
 
 ### Install NvChad from official website
 I don't really want to spend my time on mantaining own config for Neovim (I used to spend). Among many configs for neovim around - NvChad is my favourite.
