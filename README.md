@@ -7,8 +7,8 @@ Scripts for my UNIX based machines. I try to make each script work on any major 
 
 ### Some personal rules for writing scripts I try to apply
 - use common programs to avoid additional dependencies
-- try to make it POSIX compilant
-- can be run from any place on your system - it shouldn't result with output files in your current directory
+- make it POSIX compilant
+- it shouldn't result with unexpected output files in your current directory
 
 ### Install Nerd Fonts
 Nerd fonts are essential part of my every Linux setup. They are required by many fancy configs for shell or text editors. Script just install my favourite nerd fonts.
