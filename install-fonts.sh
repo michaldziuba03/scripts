@@ -8,19 +8,25 @@ FIRA_CODE="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.0/Fira
 MESLO="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.0/Meslo.zip"
 IOSEVKA="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.0/Iosevka.zip"
 
+if [ "$(id -u)" -eq 0 ]
+then
+  echo "Don't run this script as root!" >&2
+  exit 1
+fi
+
 prepare()
 {
-  mkdir -p $TMP_LOCATION
-  mkdir -p $FONTS_DIR
+  mkdir -p "$TMP_LOCATION"
+  mkdir -p "$FONTS_DIR"
 }
 
 install_font()
 {
-  local name="$1"
-  local url="$2"
+  name="$1"
+  url="$2"
   
   echo "=======> Installing $name"
-  curl -L $url > "$TMP_LOCATION/$name.zip" && unzip -o "$TMP_LOCATION/$name.zip" -d $FONTS_DIR
+  curl -L "$url" > "$TMP_LOCATION/$name.zip" && unzip -o "$TMP_LOCATION/$name.zip" -d "$FONTS_DIR"
 }
 
 install()
@@ -43,12 +49,12 @@ clean()
   rm -rf $TMP_LOCATION
 
   # remove non-font files from fonts dir
-  try_rm $FONTS_DIR/LICENSE
-  try_rm $FONTS_DIR/LICENSE.md
-  try_rm $FONTS_DIR/LICENSE.txt
-  try_rm $FONTS_DIR/OFL.txt
-  try_rm $FONTS_DIR/readme.md
+  try_rm "$FONTS_DIR/LICENSE"
+  try_rm "$FONTS_DIR/LICENSE.md"
+  try_rm "$FONTS_DIR/LICENSE.txt"
+  try_rm "$FONTS_DIR/OFL.txt"
+  try_rm "$FONTS_DIR/readme.md"
 }
 
-prepare && install && clean && fc-cache $FONTS_DIR
+prepare && install && clean && fc-cache "$FONTS_DIR"
 
