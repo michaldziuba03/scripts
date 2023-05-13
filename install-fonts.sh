@@ -2,7 +2,6 @@
 
 FONTS_DIR="$HOME/.local/share/fonts"
 TMP_LOCATION="/tmp/md03"
-# MY FAV FONTS:
 VERSION="v3.0.0" # to update just increase number
 DOWNLOAD_ROOT="https://github.com/ryanoasis/nerd-fonts/releases/download/$VERSION"
 
@@ -17,16 +16,10 @@ prepare()
   mkdir -p "$FONTS_DIR"
 }
 
-get_url()
-{
-  name="$1"
-  echo "$DOWNLOAD_ROOT/$name.zip"
-}
-
 install_font()
 {
   name="$1"
-  url="$(get_url "$name")"
+  url="$DOWNLOAD_ROOT/$name.zip"
   
   echo "=======> Installing $name"
   curl -L "$url" > "$TMP_LOCATION/$name.zip" && unzip -o "$TMP_LOCATION/$name.zip" -d "$FONTS_DIR"
@@ -63,5 +56,5 @@ clean()
   try_rm "$FONTS_DIR/readme.md"
 }
 
-prepare && install ; clean 
+prepare && install ; clean
 
