@@ -3,8 +3,7 @@
 NEOVIM_INSTALL="https://github.com/neovim/neovim/releases/download/stable/nvim.appimage"
 DOWNLOAD_OUTPUT="$HOME/.local/bin"
 
-if [ "$(id -u)" -eq 0 ]
-then
+if [ "$(id -u)" -eq 0 ]; then
   echo "Don't run this script as root!" >&2
   exit 1
 fi

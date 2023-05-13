@@ -3,13 +3,10 @@
 FONTS_DIR="$HOME/.local/share/fonts"
 TMP_LOCATION="/tmp/md03"
 # MY FAV FONTS:
-SOURCE_CODE_PRO="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.0/SourceCodePro.zip"
-FIRA_CODE="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.0/FiraCode.zip"
-MESLO="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.0/Meslo.zip"
-IOSEVKA="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.0/Iosevka.zip"
+VERSION="v3.0.0" # to update just increase number
+DOWNLOAD_ROOT="https://github.com/ryanoasis/nerd-fonts/releases/download/$VERSION"
 
-if [ "$(id -u)" -eq 0 ]
-then
+if [ "$(id -u)" -eq 0 ]; then
   echo "Don't run this script as root!" >&2
   exit 1
 fi
@@ -20,10 +17,16 @@ prepare()
   mkdir -p "$FONTS_DIR"
 }
 
+get_url()
+{
+  name="$1"
+  echo "$DOWNLOAD_ROOT/$name.zip"
+}
+
 install_font()
 {
   name="$1"
-  url="$2"
+  url="$(get_url "$name")"
   
   echo "=======> Installing $name"
   curl -L "$url" > "$TMP_LOCATION/$name.zip" && unzip -o "$TMP_LOCATION/$name.zip" -d "$FONTS_DIR"
@@ -31,10 +34,14 @@ install_font()
 
 install()
 {
-  install_font FiraCode $FIRA_CODE
-  install_font SauceCodePro $SOURCE_CODE_PRO 
-  install_font Meslo $MESLO
-  install_font Iosevka $IOSEVKA
+  install_font FiraCode
+  install_font SourceCodePro 
+  install_font Meslo
+  install_font Iosevka
+  install_font RobotoMono
+  install_font JetBrainsMono
+
+  fc-cache "$FONTS_DIR"
 }
 
 try_rm()
@@ -56,5 +63,5 @@ clean()
   try_rm "$FONTS_DIR/readme.md"
 }
 
-prepare && install && clean && fc-cache "$FONTS_DIR"
+prepare && install ; clean 
 
